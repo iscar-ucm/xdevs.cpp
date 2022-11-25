@@ -1,6 +1,6 @@
 * xDEVS simulation engine (C++ API)
 
-Wellcome to the xDEVS simulation engine. This is the C++ repository, which shares the xDEVS interfaces but through the C++ (>=C++11) language.
+Welcome to the xDEVS simulation engine. This is the C++ repository, which shares the xDEVS interfaces but through the C++ (>=C++11) language.
 
 ** Running the DEVStone benchmark
    
