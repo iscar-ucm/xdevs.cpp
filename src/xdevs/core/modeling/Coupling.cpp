@@ -7,7 +7,7 @@
 
 #include "Coupling.h"
 
-Coupling::Coupling(Port* portFrom, Port* portTo) {
+Coupling::Coupling(PortPtr portFrom, PortPtr portTo) {
 	this->portFrom = portFrom;
 	this->portTo = portTo;
 }
@@ -16,8 +16,8 @@ Coupling::~Coupling() {}
 
 // Coupling members
 void Coupling::propagateValues() { portTo->addValues(portFrom->getValues()); }
-const Port* Coupling::getPortFrom() const { return portFrom; }
-const Port* Coupling::getPortTo() const { return portTo; }
+PortPtr Coupling::getPortFrom() const { return portFrom; }
+PortPtr Coupling::getPortTo() const { return portTo; }
 
 /*std::string Coupling::toString() {
 	std::string ret;

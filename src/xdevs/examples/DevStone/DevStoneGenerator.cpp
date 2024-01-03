@@ -6,9 +6,9 @@ DevStoneGenerator::DevStoneGenerator(const std::string& name, double preparation
 	  preparationTime(preparationTime),
 	  period(period),
 	  maxEvents(maxEvents),
-	  counter(0),
-	  oOut("out") {
-	Component::addOutPort(&oOut);
+	  counter(0) {
+	oOut = makePort("oOut");
+	Component::addOutPort(oOut);
 }
 
 DevStoneGenerator::~DevStoneGenerator() { }
@@ -35,5 +35,5 @@ void DevStoneGenerator::deltext(double e) {
 
 void DevStoneGenerator::lambda() {
 	Event event = std::make_shared<Long>(counter);
-	oOut.addValue(event);
+	oOut->addValue(event);
 }

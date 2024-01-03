@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016-2016 José Luis Risco Martín <jlrisco@ucm.es>.
+ * Copyright (C) 2016-2016 Josï¿½ Luis Risco Martï¿½n <jlrisco@ucm.es>.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,7 +16,7 @@
  * http://www.gnu.org/licenses/
  *
  * Contributors:
- *  - José Luis Risco Martín
+ *  - Josï¿½ Luis Risco Martï¿½n
  */
 
 #ifndef SRC_XDEVS_CORE_MODELING_COUPLED_H_
@@ -42,7 +42,7 @@ public:
 	virtual void initialize();
 	virtual void exit();
 
-	void addCoupling(Component* cFrom, Port* pFrom, Component* cTo, Port* pTo);
+	void addCoupling(Component* cFrom, PortPtr pFrom, Component* cTo, PortPtr pTo);
 	void addComponent(Component* component);
     const std::list<Component*>& getComponents() const;
     const std::list<Coupling*>& getIC() const;
@@ -50,7 +50,7 @@ public:
     const std::list<Coupling*>& getEOC() const;
 
     Component* compFromPath(std::string path);
-    Port* portFromPath(std::string path);
+    PortPtr portFromPath(std::string path);
 	// TODO: Implement this function
 	// CoupledInterface flatten()
 };

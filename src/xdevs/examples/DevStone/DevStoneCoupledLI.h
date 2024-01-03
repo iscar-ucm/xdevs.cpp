@@ -11,8 +11,8 @@
 class DevStoneCoupledLI : public Coupled {
 public:
 	/// Model input and output ports
-	Port iIn;
-	Port oOut;
+	PortPtr iIn;
+	PortPtr oOut;
 
 	DevStoneCoupledLI(const std::string& prefix, int width, int depth, double preparationTime, double intDelayTime, double extDelayTime);
 	virtual ~DevStoneCoupledLI();

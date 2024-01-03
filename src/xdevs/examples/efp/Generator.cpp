@@ -7,9 +7,11 @@
 
 #include "Generator.h"
 
-Generator::Generator(const std::string& name, const double& period) : Atomic(name), jobCounter(1), period(period), iStop("stop"), oOut("out") {
-  this->addInPort(&iStop);
-  this->addOutPort(&oOut);
+Generator::Generator(const std::string& name, const double& period) : Atomic(name), jobCounter(1), period(period) {
+  this->iStop = makePort("stop");
+  this->oOut = makePort("out");
+  this->addInPort(iStop);
+  this->addOutPort(oOut);
 }
 
 Generator::~Generator() {
@@ -34,5 +36,5 @@ void Generator::deltext(double e) {
 
 void Generator::lambda() {
   auto job = std::make_shared<Job>(std::to_string(jobCounter));
-  oOut.addValue(job);
+  oOut->addValue(job);
 }

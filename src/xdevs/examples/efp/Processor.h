@@ -32,8 +32,8 @@ protected:
   Event nextEvent;
   double processingTime;
 public:
-  Port iIn;
-  Port oOut;
+  PortPtr iIn;
+  PortPtr oOut;
   Processor(const std::string& name, double processingTime);
   virtual ~Processor();
 

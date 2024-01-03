@@ -37,9 +37,9 @@ protected:
   double totalTa;
   double clock;
 public:
-  Port iArrived;
-  Port iSolved;
-  Port oOut;
+  PortPtr iArrived;
+  PortPtr iSolved;
+  PortPtr oOut;
 
   Transducer(const std::string& name, double observationTime);
   virtual ~Transducer();

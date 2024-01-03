@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016-2016 José Luis Risco Martín <jlrisco@ucm.es>.
+ * Copyright (C) 2016-2016 JosÃ© Luis Risco MartÃ­n <jlrisco@ucm.es>.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,7 +16,7 @@
  * http://www.gnu.org/licenses/
  *
  * Contributors:
- *  - José Luis Risco Martín
+ *  - JosÃ© Luis Risco MartÃ©n
  */
 
 #ifndef SRC_XDEVS_CORE_MODELING_COUPLING_H_
@@ -27,15 +27,15 @@
 
 class Coupling {
 protected:
-  Port* portFrom;
-  Port* portTo;
+  PortPtr portFrom;
+  PortPtr portTo;
 public:
-  Coupling(Port* portFrom, Port* portTo);
+  Coupling(PortPtr portFrom, PortPtr portTo);
   virtual ~Coupling();
   // Coupling members
   void propagateValues();
-  const Port* getPortFrom() const;
-  const Port* getPortTo() const;
+  PortPtr getPortFrom() const;
+  PortPtr getPortTo() const;
   //std::string toString();
 };
 

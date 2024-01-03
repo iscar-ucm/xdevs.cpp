@@ -7,10 +7,13 @@
 
 #include "Transducer.h"
 
-Transducer::Transducer(const std::string& name, double observationTime) : Atomic(name), jobsArrived(), jobsSolved(), observationTime(observationTime), totalTa(0), clock(0), iArrived("arrived"), iSolved("solved"), oOut("out") {
-  Component::addInPort(&iArrived);
-  Component::addInPort(&iSolved);
-  Component::addOutPort(&oOut);
+Transducer::Transducer(const std::string& name, double observationTime) : Atomic(name), jobsArrived(), jobsSolved(), observationTime(observationTime), totalTa(0), clock(0) {
+  iArrived = makePort("arrived");
+  iSolved = makePort("solved");
+  oOut = makePort("out");  
+  Component::addInPort(iArrived);
+  Component::addInPort(iSolved);
+  Component::addOutPort(oOut);
 }
 
 Transducer::~Transducer() {
@@ -53,16 +56,16 @@ void Transducer::deltint() {
 void Transducer::deltext(double e) {
   clock += e;
   if (Atomic::phaseIs("active")) {
-    if (!iArrived.isEmpty()) {
-      Event event = iArrived.getSingleValue();
+    if (!iArrived->isEmpty()) {
+      Event event = iArrived->getSingleValue();
       Job* ptrJob = (Job*)event.get();
       //Job job(*ptrJob);
       std::cout << "Start job " << ptrJob->getId() << " @ t = " << clock << std::endl;
       ptrJob->setTime(clock);
       jobsArrived.push_back(event);
     }
-    if (!iSolved.isEmpty()) {
-      Event event = iSolved.getSingleValue();
+    if (!iSolved->isEmpty()) {
+      Event event = iSolved->getSingleValue();
       Job* ptrJob = (Job*)event.get();
       //Job job(*ptrJob);
       totalTa += (clock - ptrJob->getTime());
@@ -77,6 +80,6 @@ void Transducer::deltext(double e) {
 void Transducer::lambda() {
   if (Atomic::phaseIs("done")) {
     Event event(nullptr);
-    oOut.addValue(event);
+    oOut->addValue(event);
   }
 }

@@ -11,8 +11,8 @@
 class DevStoneCoupledHO : public Coupled {
 public:
 	/// Model input and output ports
-	Port iIn, iInAux;
-	Port oOut, oOutAux;
+	PortPtr iIn, iInAux;
+	PortPtr oOut, oOutAux;
 
 	DevStoneCoupledHO(const std::string& prefix, int width, int depth, double preparationTime, double intDelayTime, double extDelayTime);
 	virtual ~DevStoneCoupledHO();

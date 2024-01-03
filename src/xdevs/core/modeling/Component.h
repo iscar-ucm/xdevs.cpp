@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016-2016 José Luis Risco Martín <jlrisco@ucm.es>.
+ * Copyright (C) 2016-2016 Josï¿½ Luis Risco Martï¿½n <jlrisco@ucm.es>.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,7 +16,7 @@
  * http://www.gnu.org/licenses/
  *
  * Contributors:
- *  - José Luis Risco Martín
+ *  - Josï¿½ Luis Risco Martï¿½n
  */
 
 #ifndef SRC_XDEVS_CORE_MODELING_COMPONENT_H_
@@ -30,8 +30,8 @@
 class Component {
 protected:
 	std::string name;
-	std::list<Port*> inPorts;
-	std::list<Port*> outPorts;
+	std::list<PortPtr> inPorts;
+	std::list<PortPtr> outPorts;
 public:
 	Component(const std::string& name);
 	virtual ~Component();
@@ -40,10 +40,10 @@ public:
 	virtual void initialize() = 0;
 	virtual void exit() = 0;
 	virtual bool isInputEmpty();
-	virtual void addInPort(Port* port);
-	virtual const std::list<Port*>& getInPorts();
-	virtual void addOutPort(Port* port);
-	virtual const std::list<Port*>& getOutPorts();
+	virtual void addInPort(PortPtr port);
+	virtual const std::list<PortPtr>& getInPorts();
+	virtual void addOutPort(PortPtr port);
+	virtual const std::list<PortPtr>& getOutPorts();
 	//virtual const std::string& toString();
 };
 
