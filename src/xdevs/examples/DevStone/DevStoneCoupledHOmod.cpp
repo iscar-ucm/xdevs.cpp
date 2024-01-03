@@ -17,7 +17,7 @@ DevStoneCoupledHOmod::DevStoneCoupledHOmod(const std::string& prefix, int width,
     DevStoneCoupledHOmod* coupled = new DevStoneCoupledHOmod(prefix, width, depth - 1, preparationTime, intDelayTime, extDelayTime);
     Coupled::addComponent(coupled);
     Coupled::addCoupling(this, iIn, coupled, coupled->iIn);
-    Coupled::addCoupling(coupled, &coupled->oOut, this, &oOut);
+    Coupled::addCoupling(coupled, coupled->oOut, this, oOut);
 
     // First layer of atomic models:
     std::vector<DevStoneAtomic*> prevLayer;

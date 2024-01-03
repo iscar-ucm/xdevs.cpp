@@ -19,7 +19,7 @@ DevStoneCoupledLI::DevStoneCoupledLI(const std::string& prefix, int width, int d
 		DevStoneCoupledLI* coupled = new DevStoneCoupledLI(prefix, width, depth - 1, preparationTime, intDelayTime, extDelayTime);
 		Coupled::addComponent(coupled);
 		Coupled::addCoupling(this, iIn, coupled, coupled->iIn);
-		Coupled::addCoupling(coupled, &coupled->oOut, this, &oOut);
+		Coupled::addCoupling(coupled, coupled->oOut, this, oOut);
 		for (int i = 0; i < (width - 1); ++i) {
 			snprintf(buffer, sizeof(buffer), "%d", i+1);
 			DevStoneAtomic* atomic = new DevStoneAtomic(std::string("A") + buffer + "_" + name, preparationTime, intDelayTime, extDelayTime);

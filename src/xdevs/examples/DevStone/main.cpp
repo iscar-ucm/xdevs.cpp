@@ -176,24 +176,24 @@ int main(int argc, char *argv[]) {
   case BENCH_LI:
     coupledStone = new DevStoneCoupledLI("C", width, depth, preparationTime, intDelayTime, extDelayTime);
     framework.addComponent(coupledStone);
-    framework.addCoupling(&generator, &generator.oOut, coupledStone, &((DevStoneCoupledLI*)coupledStone)->iIn);
+    framework.addCoupling(&generator, generator.oOut, coupledStone, ((DevStoneCoupledLI*)coupledStone)->iIn);
     break;
   case BENCH_HI:
     coupledStone = new DevStoneCoupledHI("C", width, depth, preparationTime, intDelayTime, extDelayTime);
     framework.addComponent(coupledStone);
-    framework.addCoupling(&generator, &generator.oOut, coupledStone, &((DevStoneCoupledHI*)coupledStone)->iIn);
+    framework.addCoupling(&generator, generator.oOut, coupledStone, ((DevStoneCoupledHI*)coupledStone)->iIn);
     break;
   case BENCH_HO:
     coupledStone = new DevStoneCoupledHO("C", width, depth, preparationTime, intDelayTime, extDelayTime);
     framework.addComponent(coupledStone);
-    framework.addCoupling(&generator, &generator.oOut, coupledStone, &((DevStoneCoupledHO*)coupledStone)->iIn);
-    framework.addCoupling(&generator, &generator.oOut, coupledStone, &((DevStoneCoupledHO*)coupledStone)->iInAux);
+    framework.addCoupling(&generator, generator.oOut, coupledStone, ((DevStoneCoupledHO*)coupledStone)->iIn);
+    framework.addCoupling(&generator, generator.oOut, coupledStone, ((DevStoneCoupledHO*)coupledStone)->iInAux);
     break;
   case BENCH_HOmod:
     coupledStone = new DevStoneCoupledHOmod("C", width, depth, preparationTime, intDelayTime, extDelayTime);
     framework.addComponent(coupledStone);
-    framework.addCoupling(&generator, &generator.oOut, coupledStone, &((DevStoneCoupledHOmod*)coupledStone)->iIn);
-    framework.addCoupling(&generator, &generator.oOut, coupledStone, &((DevStoneCoupledHOmod*)coupledStone)->iInAux);
+    framework.addCoupling(&generator, generator.oOut, coupledStone, ((DevStoneCoupledHOmod*)coupledStone)->iIn);
+    framework.addCoupling(&generator, generator.oOut, coupledStone, ((DevStoneCoupledHOmod*)coupledStone)->iInAux);
     break;
   }
 
