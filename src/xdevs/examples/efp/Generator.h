@@ -34,8 +34,8 @@ protected:
   int jobCounter;
   double period;
 public:
-  PortPtr iStop;
-  PortPtr oOut;
+  Port iStop;
+  Port oOut;
 
   Generator(const std::string& name, const double& period);
   virtual ~Generator();

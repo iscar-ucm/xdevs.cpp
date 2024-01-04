@@ -14,7 +14,7 @@ protected:
 	long maxEvents;
 	long counter;
 public:
-	PortPtr oOut;
+	Port oOut;
 
 	DevStoneGenerator(const std::string& name, double preparationTime, double period, long maxEvents);
 	virtual ~DevStoneGenerator();

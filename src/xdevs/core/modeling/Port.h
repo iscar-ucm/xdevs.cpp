@@ -44,7 +44,4 @@ public:
   const std::string& getName() const;
 };
 
-typedef std::shared_ptr<Port> PortPtr;
-#define makePort(name) std::make_shared<Port>(name)
-
 #endif /* _PORT_H_ */

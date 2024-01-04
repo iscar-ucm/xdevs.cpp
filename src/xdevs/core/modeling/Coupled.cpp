@@ -25,7 +25,7 @@ Coupled::~Coupled() {
 void Coupled::initialize() {}
 void Coupled::exit() {}
 
-void Coupled::addCoupling(Component* cFrom, PortPtr pFrom, Component* cTo, PortPtr pTo) {
+void Coupled::addCoupling(Component* cFrom, Port* pFrom, Component* cTo, Port* pTo) {
 	Coupling* coupling = new Coupling(pFrom, pTo);
 	// Add to connections
 	if (cFrom == this) {
@@ -86,7 +86,7 @@ Component* Coupled::compFromPath(std::string path) {
     return nullptr;
 }
 
-PortPtr Coupled::portFromPath(std::string path) {
+Port* Coupled::portFromPath(std::string path) {
     //std::cout << "portFromPath: " << path << std::endl;
     size_t pos = path.rfind(".");
 
@@ -99,14 +99,14 @@ PortPtr Coupled::portFromPath(std::string path) {
     Component* comp = compFromPath(compPath);
 
     if(comp != nullptr) {
-        for(PortPtr port: comp->getInPorts()) {
+        for(Port* port: comp->getInPorts()) {
             if(port->getName() == portName) {
             std::cout << "port found: " << port->getName() << std::endl;
                 return port;
             }
         }
 
-        for(PortPtr port: comp->getOutPorts()) {
+        for(Port* port: comp->getOutPorts()) {
             if(port->getName() == portName) {
                 std::cout << "port found: " << port->getName() << std::endl;
                 return port;

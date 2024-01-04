@@ -26,11 +26,11 @@ AtomicADEVS::AtomicADEVS(const std::string& name, adevs::Atomic<PortValue>* mode
 	this->model = model;
 	for(int port : in_ports) 
 	{
-		Component::addInPort(makePort(std::to_string(port)));
+		Component::addInPort(new Port(std::to_string(port)));
 	}
 	for(int port: out_ports)
 	{
-		Component::addOutPort(makePort(std::to_string(port)));
+		Component::addOutPort(new Port(std::to_string(port)));
 	}
 }
 
@@ -78,7 +78,7 @@ void AtomicADEVS::lambda()
 	adevs::Bag<PortValue> msg;
 	model->output_func(msg);
 
-	std::list<PortPtr> ports = this->getOutPorts();
+	std::list<Port *> ports = this->getOutPorts();
 
 	for(auto port_adevs : msg) {
 		for(auto port_xdevs : ports) {
@@ -92,7 +92,7 @@ void AtomicADEVS::lambda()
 adevs::Bag<PortValue> AtomicADEVS::buildMessage()
 {
 	adevs::Bag<PortValue> msg;
-	std::list<PortPtr> ports = getInPorts();
+	std::list<Port *> ports = getInPorts();
 
 	for(auto port : ports) {
 		const std::string& port_name = port->getName();

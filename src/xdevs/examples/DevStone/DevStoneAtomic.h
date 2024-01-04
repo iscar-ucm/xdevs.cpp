@@ -19,8 +19,8 @@ protected:
   Dhrystone dhrystone;
 public:
   /// Model input port
-  PortPtr iIn;
-  PortPtr oOut;
+  Port iIn;
+  Port oOut;
   static long NUM_DELT_INTS;
   static long NUM_DELT_EXTS;
   static long NUM_EVENT_EXTS;

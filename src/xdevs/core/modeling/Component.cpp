@@ -12,9 +12,9 @@ Component::Component(const std::string& name) : name(name), inPorts(), outPorts(
 Component::~Component() {}
 
 bool Component::isInputEmpty() {
-	std::list<PortPtr>::iterator itr;
+	std::list<Port*>::iterator itr;
 	for(itr = inPorts.begin(); itr != inPorts.end(); ++itr) {
-		PortPtr port = *itr;
+		Port* port = *itr;
 		if(!port->isEmpty()) {
 			return false;
 		}
@@ -22,11 +22,11 @@ bool Component::isInputEmpty() {
 	return true;
 }
 
-void Component::addInPort(PortPtr port) {
+void Component::addInPort(Port* port) {
 	inPorts.push_back(port);
 }
 
-const std::list<PortPtr>& Component::getInPorts() {
+const std::list<Port*>& Component::getInPorts() {
 	return inPorts;
 }
 
@@ -34,11 +34,11 @@ const std::string Component::getName() {
 	return name;
 }
 
-void Component::addOutPort(PortPtr port) {
+void Component::addOutPort(Port* port) {
 	outPorts.push_back(port);
 }
 
-const std::list<PortPtr>& Component::getOutPorts() {
+const std::list<Port*>& Component::getOutPorts() {
 	return outPorts;
 }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016-2016 Josï¿½ Luis Risco Martï¿½n <jlrisco@ucm.es>.
+ * Copyright (C) 2016-2016 José Luis Risco Martín <jlrisco@ucm.es>.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,7 +16,7 @@
  * http://www.gnu.org/licenses/
  *
  * Contributors:
- *  - Josï¿½ Luis Risco Martï¿½n
+ *  - José Luis Risco Martín
  */
 
 #ifndef SRC_XDEVS_EXAMPLES_EFP_GENERATOR_H_
@@ -34,8 +34,8 @@ protected:
 	int jobCounter;
 	double period;
 public:
-	PortPtr iStop;
-	PortPtr oOut;
+	Port iStop;
+	Port oOut;
 
 	Generator(const std::string& name, const double& period);
 	virtual ~Generator();

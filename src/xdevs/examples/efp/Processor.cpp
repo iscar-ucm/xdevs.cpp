@@ -7,11 +7,9 @@
 
 #include "Processor.h"
 
-Processor::Processor(const std::string& name, double processingTime) : Atomic(name), nextEvent(nullptr), processingTime(processingTime) {
-  this->iIn = makePort("in");
-  this->oOut = makePort("out");
-  this->addInPort(iIn);
-  this->addOutPort(oOut);
+Processor::Processor(const std::string& name, double processingTime) : Atomic(name), nextEvent(nullptr), processingTime(processingTime), iIn("in"), oOut("out") {
+  this->addInPort(&iIn);
+  this->addOutPort(&oOut);
 }
 
 Processor::~Processor() {
@@ -30,11 +28,11 @@ void Processor::deltint() {
 
 void Processor::deltext(double e) {
   if (Atomic::phaseIs("passive")) {
-    nextEvent = iIn->getSingleValue();
+    nextEvent = iIn.getSingleValue();
     Atomic::holdIn("active", processingTime);
   }
 }
 
 void Processor::lambda() {
-  oOut->addValue(nextEvent);
+  oOut.addValue(nextEvent);
 }

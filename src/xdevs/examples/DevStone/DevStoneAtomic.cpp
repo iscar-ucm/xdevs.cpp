@@ -10,11 +10,11 @@ DevStoneAtomic::DevStoneAtomic(const std::string& name, double preparationTime, 
 	  preparationTime(preparationTime),
 	  intDelayTime(intDelayTime),
 	  extDelayTime(extDelayTime),
-	  dhrystone() {
-	iIn = makePort("in");
-	oOut = makePort("out");
-	Component::addInPort(iIn);
-	Component::addOutPort(oOut);
+	  dhrystone(),
+	  iIn("in"),
+	  oOut("out") {
+	Component::addInPort(&iIn);
+	Component::addOutPort(&oOut);
 }
 
 DevStoneAtomic::~DevStoneAtomic() {}
@@ -38,8 +38,8 @@ void DevStoneAtomic::deltint() {
 void DevStoneAtomic::deltext(double e) {
   NUM_DELT_EXTS++;
   if(extDelayTime>0) dhrystone.execute(extDelayTime);
-  if(!iIn->isEmpty()) {
-    NUM_EVENT_EXTS+= iIn->getValues().size();
+  if(!iIn.isEmpty()) {
+    NUM_EVENT_EXTS+= iIn.getValues().size();
   }
   Atomic::holdIn("active", preparationTime);
 }
@@ -48,5 +48,5 @@ void DevStoneAtomic::deltext(double e) {
 /// Output function.
 void DevStoneAtomic::lambda() {
   Event event = std::make_shared<Long>(0L);
-  oOut->addValue(event);
+  oOut.addValue(event);
 }

@@ -52,14 +52,14 @@ void Simulator::lambda() {
 }
 
 void Simulator::clear() {
-	std::list<PortPtr> inPorts;
+	std::list<Port*> inPorts;
 	inPorts = model->getInPorts();
-	for (PortPtr port : inPorts) {
+	for (Port* port : inPorts) {
 		port->clear();
 	}
-	std::list<PortPtr> outPorts;
+	std::list<Port*> outPorts;
 	outPorts = model->getOutPorts();
-	for (PortPtr port : outPorts) {
+	for (Port* port : outPorts) {
 		port->clear();
 	}
 }
